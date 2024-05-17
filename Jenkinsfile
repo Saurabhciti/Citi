@@ -4,7 +4,7 @@ pipeline {
         string(name: 'VERSION', description: 'Enter the APP VERSION')
     }
 environment{
-        AWS_ACCOUNT_ID="533267172375"
+        AWS_ACCOUNT_ID="730335560263"
         REGION="ap-south-1"
         REPO_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/catalogue"
         DOCKER_REGISTRY = 'docker.io'
@@ -52,8 +52,8 @@ environment{
                     
                         sh """
                         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                        docker tag catalogue:${VERSION}  muralisocial123/catalogue:${VERSION}
-                        docker push muralisocial123/catalogue:${VERSION}
+                        docker tag catalogue:${VERSION}  dockersharma109/catalogue:${VERSION}
+                        docker push dockersharma109/catalogue:${VERSION}
                         """
                     
                 }
@@ -67,7 +67,7 @@ environment{
                         sh """
                         aws eks update-kubeconfig --region ${REGION} --name eks-cluster
                         cd helm
-                        helm install node-app . --set deployment.imageVersion=${VERSION}
+                        helm install citi-deployment . --set deployment.imageVersion=${VERSION}
                         """
                     }
                 }
