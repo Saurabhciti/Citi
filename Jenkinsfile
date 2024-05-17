@@ -67,7 +67,7 @@ environment{
                         sh """
                         aws eks update-kubeconfig --region ${REGION} --name eks-cluster
                         cd helm
-                        helm install citi-deployment . --set deployment.imageVersion=${VERSION}
+                        helm install citi-deployment-D1 . --set deployment.imageVersion=${VERSION}
                         """
                     }
                 }
